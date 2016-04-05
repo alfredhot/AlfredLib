@@ -20,7 +20,7 @@
                 android:singleLine="true"
         />
         <TextView
-                android:id="@+id/tv_mainlist_item_des"
+                android:id="@+id/tv_mainlist_item_codedes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="description"
@@ -38,22 +38,18 @@
     >
 
         <TextView
+                android:id="@+id/tv_mainlist_item_codegendate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0000-00-00"
                 android:textSize="15sp"
         />
         <TextView
+                android:id="@+id/tv_mainlist_item_codemoddate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="gen date:"
                 android:textSize="15sp"
         />
     </LinearLayout>
-    <TextView
-            android:id="@+id/"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-    />
 </LinearLayout>

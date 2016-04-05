@@ -29,5 +29,7 @@ public class MainAct extends Activity {
     private void initView(){
         tv_main_label = (TextView) findViewById(R.id.tv_main_label);
         lv_main_list = (ListView) findViewById(R.id.lv_main_list);
+
+
     }
 }
