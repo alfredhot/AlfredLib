@@ -3,11 +3,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
               android:orientation="horizontal"
-              android:weightSum="100">
+              >
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="65"
+            android:layout_weight="50"
             android:orientation="vertical"
             android:padding="10dp"
     >
@@ -31,25 +31,26 @@
     <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="35"
+            android:layout_weight="50"
             android:padding="10dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
     >
 
         <TextView
-                android:id="@+id/tv_mainlist_item_codegendate"
+                android:id="@+id/tv_mainlist_item_codelevel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0000-00-00"
+                android:text="Default"
                 android:textSize="15sp"
         />
         <TextView
-                android:id="@+id/tv_mainlist_item_codemoddate"
+                android:id="@+id/tv_mainlist_item_codepath"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="gen date:"
-                android:textSize="15sp"
+                android:text="web.WebViewAct.class"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="0.6"
         />
     </LinearLayout>
 </LinearLayout>

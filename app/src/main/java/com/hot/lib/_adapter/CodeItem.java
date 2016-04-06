@@ -13,6 +13,25 @@ public class CodeItem {
     private long codeGenDateLong;
     private long codeModDateLong;
 
+    private String codeLevel = "";
+    private String codeLink = "";
+
+    public String getCodeLink() {
+        return codeLink;
+    }
+
+    public void setCodeLink(String codeLink) {
+        this.codeLink = codeLink;
+    }
+
+    public String getCodeLevel() {
+        return codeLevel;
+    }
+
+    public void setCodeLevel(String codeLevel) {
+        this.codeLevel = codeLevel;
+    }
+
     public int getCodeId() {
         return codeId;
     }
