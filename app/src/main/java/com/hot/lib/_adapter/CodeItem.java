@@ -8,20 +8,25 @@ public class CodeItem {
     private int codeId;
     private String codeName= "";
     private String codeDes= "";
-    private String codeGenDateStr= "";
-    private String codeModDateStr= "";
-    private long codeGenDateLong;
-    private long codeModDateLong;
-
     private String codeLevel = "";
-    private String codeLink = "";
+    private String codePath = "";
+    private boolean codeMark;
 
-    public String getCodeLink() {
-        return codeLink;
+    public CodeItem(int codeId, String codeName, String codeDes, String codeLevel, String codePath, boolean codeMark) {
+        this.codeId = codeId;
+        this.codeName = codeName;
+        this.codeDes = codeDes;
+        this.codeLevel = codeLevel;
+        this.codePath = codePath;
+        this.codeMark = codeMark;
     }
 
-    public void setCodeLink(String codeLink) {
-        this.codeLink = codeLink;
+    public String getCodePath() {
+        return codePath;
+    }
+
+    public void setCodePath(String codePath) {
+        this.codePath = codePath;
     }
 
     public String getCodeLevel() {
@@ -56,35 +61,12 @@ public class CodeItem {
         this.codeDes = codeDes;
     }
 
-    public String getCodeGenDateStr() {
-        return codeGenDateStr;
+    public boolean isCodeMark() {
+        return codeMark;
     }
 
-    public void setCodeGenDateStr(String codeGenDateStr) {
-        this.codeGenDateStr = codeGenDateStr;
+    public void setCodeMark(boolean codeMark) {
+        this.codeMark = codeMark;
     }
 
-    public String getCodeModDateStr() {
-        return codeModDateStr;
-    }
-
-    public void setCodeModDateStr(String codeModDateStr) {
-        this.codeModDateStr = codeModDateStr;
-    }
-
-    public long getCodeGenDateLong() {
-        return codeGenDateLong;
-    }
-
-    public void setCodeGenDateLong(long codeGenDateLong) {
-        this.codeGenDateLong = codeGenDateLong;
-    }
-
-    public long getCodeModDateLong() {
-        return codeModDateLong;
-    }
-
-    public void setCodeModDateLong(long codeModDateLong) {
-        this.codeModDateLong = codeModDateLong;
-    }
 }

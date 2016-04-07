@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import com.hot.lib.R;
@@ -21,6 +22,9 @@ public class CodeListAdapter extends BaseAdapter {
     public CodeListAdapter(ArrayList<CodeItem> codeList, Context context) {
         this.mCodeList = codeList;
         this.mContext = context;
+
+        //sorting
+        sortListByMark();
     }
 
     @Override
@@ -48,31 +52,56 @@ public class CodeListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.act_main_list_item,null);
             holder.tv_codeDes = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codedes);
             holder.tv_codeName = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codename);
-            holder.tv_codeGenDate = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codegendate);
-            holder.tv_codeModDate = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codemoddate);
-
-            //set Value
-            holder.codeItem = mCodeList.get(position);
-            holder.tv_codeName.setText(holder.codeItem.getCodeName());
-            holder.tv_codeDes.setText(holder.codeItem.getCodeDes());
-            holder.tv_codeGenDate.setText(holder.codeItem.getCodeGenDateStr());
-            holder.tv_codeModDate.setText(holder.codeItem.getCodeModDateStr());
-
-            convertView.setTag(holder);
+            holder.tv_codeLevel = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codelevel);
+            holder.tv_codePath = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codepath);
+            holder.im_codeMark = (ImageView) convertView.findViewById(R.id.im_mainlist_item_codemark);
         }
         else
         {
             holder = (Holder) convertView.getTag();
         }
+
+        //set Value
+        holder.codeItem = mCodeList.get(position);
+        holder.tv_codeName.setText(holder.codeItem.getCodeName());
+        holder.tv_codeDes.setText(holder.codeItem.getCodeDes());
+        holder.tv_codeLevel.setText(holder.codeItem.getCodeLevel());
+        holder.tv_codePath.setText(holder.codeItem.getCodePath());
+        holder.im_codeMark.setSelected(holder.codeItem.isCodeMark());
+
+        convertView.setTag(holder);
+
         return convertView;
+    }
+
+    /**
+     * 마크된 아이템 우선 보이게 소팅
+     */
+    private void sortListByMark(){
+        ArrayList<CodeItem> tempList = new ArrayList<CodeItem>();
+
+        //add marked items first
+        for(CodeItem orgItem: mCodeList){
+            if(orgItem.isCodeMark())
+                tempList.add(orgItem);
+        }
+
+        //add unmarked items
+        for(CodeItem orgItem: mCodeList){
+            if(!orgItem.isCodeMark())
+                tempList.add(orgItem);
+        }
+
+        mCodeList = tempList;
     }
 
     public final class Holder{
 
         public TextView tv_codeName;
         public TextView tv_codeDes;
-        public TextView tv_codeGenDate;
-        public TextView tv_codeModDate;
+        public TextView tv_codeLevel;
+        public TextView tv_codePath;
+        public ImageView im_codeMark;
         public CodeItem codeItem;
     }
 }
