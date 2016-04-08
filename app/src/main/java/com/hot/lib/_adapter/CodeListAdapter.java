@@ -4,10 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.TextView;
+import android.widget.*;
 import com.hot.lib.R;
 
 import java.util.ArrayList;
@@ -18,6 +15,7 @@ import java.util.ArrayList;
 public class CodeListAdapter extends BaseAdapter {
     private ArrayList<CodeItem> mCodeList;
     private Context mContext;
+    Holder tempHolder;
 
     public CodeListAdapter(ArrayList<CodeItem> codeList, Context context) {
         this.mCodeList = codeList;
@@ -43,7 +41,7 @@ public class CodeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         Holder holder = new Holder();
 
@@ -55,6 +53,13 @@ public class CodeListAdapter extends BaseAdapter {
             holder.tv_codeLevel = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codelevel);
             holder.tv_codePath = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codepath);
             holder.im_codeMark = (ImageView) convertView.findViewById(R.id.im_mainlist_item_codemark);
+            holder.im_codeMark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int clickPos = (Integer)v.getTag();
+                    Toast.makeText(mContext, "maker,pos:"+position, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
         else
         {
@@ -68,6 +73,7 @@ public class CodeListAdapter extends BaseAdapter {
         holder.tv_codeLevel.setText(holder.codeItem.getCodeLevel());
         holder.tv_codePath.setText(holder.codeItem.getCodePath());
         holder.im_codeMark.setSelected(holder.codeItem.isCodeMark());
+        holder.im_codeMark.setTag(position);
 
         convertView.setTag(holder);
 
