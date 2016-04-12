@@ -45,7 +45,7 @@ public class CodeListAdapter extends BaseAdapter {
 
         Holder holder = new Holder();
 
-        if(convertView==null && position<mCodeList.size())
+        if(convertView==null)
         {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.act_main_list_item,null);
             holder.tv_codeDes = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codedes);
@@ -53,13 +53,16 @@ public class CodeListAdapter extends BaseAdapter {
             holder.tv_codeLevel = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codelevel);
             holder.tv_codePath = (TextView) convertView.findViewById(R.id.tv_mainlist_item_codepath);
             holder.im_codeMark = (ImageView) convertView.findViewById(R.id.im_mainlist_item_codemark);
-            holder.im_codeMark.setOnClickListener(new View.OnClickListener() {
+            holder.rl_codeMarkLayout = (RelativeLayout) convertView.findViewById(R.id.rl_mainlist_item_codemarklayout);
+            holder.rl_codeMarkLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int clickPos = (Integer)v.getTag();
-                    Toast.makeText(mContext, "maker,pos:"+position, Toast.LENGTH_SHORT).show();
+                    v.findViewById(R.id.im_mainlist_item_codemark).setSelected(mCodeList.get(clickPos).toggleCodeMark());
+                    Toast.makeText(mContext, "maker,pos:"+clickPos, Toast.LENGTH_SHORT).show();
                 }
             });
+            convertView.setTag(holder);
         }
         else
         {
@@ -74,8 +77,8 @@ public class CodeListAdapter extends BaseAdapter {
         holder.tv_codePath.setText(holder.codeItem.getCodePath());
         holder.im_codeMark.setSelected(holder.codeItem.isCodeMark());
         holder.im_codeMark.setTag(position);
+        holder.rl_codeMarkLayout.setTag(position);
 
-        convertView.setTag(holder);
 
         return convertView;
     }
@@ -108,6 +111,7 @@ public class CodeListAdapter extends BaseAdapter {
         public TextView tv_codeLevel;
         public TextView tv_codePath;
         public ImageView im_codeMark;
+        public RelativeLayout rl_codeMarkLayout;
         public CodeItem codeItem;
     }
 }

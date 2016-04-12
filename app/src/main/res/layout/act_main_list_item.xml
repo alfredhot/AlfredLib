@@ -70,6 +70,7 @@
         />
     </LinearLayout>
     <RelativeLayout
+            android:id="@+id/rl_mainlist_item_codemarklayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"

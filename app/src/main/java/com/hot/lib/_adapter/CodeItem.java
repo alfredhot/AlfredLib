@@ -69,4 +69,10 @@ public class CodeItem {
         this.codeMark = codeMark;
     }
 
+    public boolean toggleCodeMark()
+    {
+        setCodeMark(!isCodeMark());
+        return isCodeMark();
+    }
+
 }
