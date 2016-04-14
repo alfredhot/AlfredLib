@@ -1,17 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="70dp"
               android:orientation="horizontal"
 >
-    <RelativeLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2">
+    <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="14"
+            android:orientation="horizontal"
+    >
+        <LinearLayout
+                android:id="@+id/ll_item_tree_level_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+        >
+            <ImageView
+                    android:id="@+id/im_item_level_line"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/tree_icon_line"
+                    android:visibility="gone"
+            />
+        </LinearLayout>
+        <ImageView
+                android:id="@+id/im_item_tree_level_state"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/tree_icon_closed"
+        />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:orientation="horizontal">
+            <RelativeLayout
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent">
+                <ImageView
+                        android:id="@+id/im_item_tree_icon"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/tree_icon_folder"
+                />
+            </RelativeLayout>
+            <TextView
+                    android:id="@+id/tv_item_tree_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="title"
+                    android:gravity="center_vertical"
+                    android:textSize="20sp"
+            />
 
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <TextView
+                android:id="@+id/tv_item_tree_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="3"
+                android:paddingBottom="5dp"
+        />
     </RelativeLayout>
-    <RelativeLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="6">
 
-    </RelativeLayout>
-    <RelativeLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2">
-
-    </RelativeLayout>
 
 </LinearLayout>

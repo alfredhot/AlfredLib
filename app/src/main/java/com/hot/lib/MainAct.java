@@ -1,11 +1,15 @@
 package com.hot.lib;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.hot.lib._adapter.CodeItem;
 import com.hot.lib._adapter.CodeListAdapter;
+import com.hot.lib.list.tree.TreeAct;
 
 import java.util.ArrayList;
 
@@ -39,6 +43,13 @@ public class MainAct extends Activity {
         initDate();
         adapter = new CodeListAdapter(codeList,this);
         lv_main_list.setAdapter(adapter);
+        lv_main_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainAct.this, TreeAct.class);
+                startActivity(intent);
+            }
+        });
 
     }
     private void initDate(){

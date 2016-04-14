@@ -2,13 +2,30 @@ package com.hot.lib.list.tree;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ListView;
 import com.hot.lib.R;
+
+import java.util.ArrayList;
 
 public class TreeAct extends Activity {
 
+    ListView treeView;
+    TreeAdapter treeAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_tree);
+        treeView = (ListView) findViewById(R.id.lv_tree_list);
+        treeView.setAdapter(new TreeAdapter(this,initData()));
+    }
+
+    ArrayList<TreeItem> initData(){
+        ArrayList<TreeItem> treeList = new ArrayList<TreeItem>();
+        TreeItem tempItem;
+        tempItem = new TreeItem(0,-1,0,true,true,true,"ROOT");
+        treeList.add(tempItem);
+        tempItem = new TreeItem(1,0,1,false,true,true,"text.txt");
+        treeList.add(tempItem);
+        return treeList;
     }
 }
