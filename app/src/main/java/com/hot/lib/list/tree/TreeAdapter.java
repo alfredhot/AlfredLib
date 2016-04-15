@@ -90,7 +90,8 @@ public class TreeAdapter extends BaseAdapter {
     }
 
     void sortList(){
-
+        int deep = getLevelDeep();
+        ArrayList<TreeItem> tempList = new ArrayList<TreeItem>();
     }
     int getLevelCount(int level){
         int count = 0;
@@ -105,6 +106,18 @@ public class TreeAdapter extends BaseAdapter {
         }
         return null;
     }
+
+    int getLevelDeep(){
+        int deep = 0;
+        while(1>0){
+            if(getLevelCount(deep)>0)
+                deep++;
+            else
+                break;
+        }
+        return deep;
+    }
+
 
     class Holder{
         TreeItem item;
