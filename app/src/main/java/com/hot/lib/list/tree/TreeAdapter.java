@@ -76,17 +76,34 @@ public class TreeAdapter extends BaseAdapter {
 //            ImageView im_line = (ImageView) LayoutInflater.from(context).inflate(R.layout.item_tree_list,null).findViewById(R.id.im_item_level_line);
 //            im_line.setVisibility(View.VISIBLE);
             ImageView im_line = new ImageView(context);
-            im_line.setImageResource(R.drawable.tree_icon_line);
 
-            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(20,0);
-            layoutParams.width = 20;
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(60, ViewGroup.LayoutParams.MATCH_PARENT);
             im_line.setLayoutParams(layoutParams);
+//            im_line.setImageResource(R.drawable.tree_icon_line);
+            im_line.setBackgroundResource(R.drawable.tree_icon_line);
             holder.ll_item_tree_level_container.addView(im_line);
         }
 
         convertView.setVisibility(holder.item.isShow()?View.VISIBLE:View.GONE);
 
         return convertView;
+    }
+
+    void sortList(){
+
+    }
+    int getLevelCount(int level){
+        int count = 0;
+        for(TreeItem item : treeList){
+            if(item.getLevel()==level) count++;
+        }
+        return count;
+    }
+    TreeItem getItemById(int id){
+        for(TreeItem item : treeList){
+            if(item.getId()==id) return item;
+        }
+        return null;
     }
 
     class Holder{

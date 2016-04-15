@@ -24,7 +24,15 @@ public class TreeAct extends Activity {
         TreeItem tempItem;
         tempItem = new TreeItem(0,-1,0,true,true,true,"ROOT");
         treeList.add(tempItem);
-        tempItem = new TreeItem(1,0,1,false,true,true,"text.txt");
+        tempItem = new TreeItem(1,0,1,true,true,true,"folder1");
+        treeList.add(tempItem);
+        tempItem = new TreeItem(2,1,2,true,true,true,"folder2");
+        treeList.add(tempItem);
+        tempItem = new TreeItem(3,1,2,false,true,true,"file1.txt");
+        treeList.add(tempItem);
+        tempItem = new TreeItem(4,2,3,false,true,true,"file2.txt");
+        treeList.add(tempItem);
+        tempItem = new TreeItem(5,0,1,false,true,true,"file3.txt");
         treeList.add(tempItem);
         return treeList;
     }
