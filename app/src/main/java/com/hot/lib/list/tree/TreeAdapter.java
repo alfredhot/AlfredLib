@@ -90,27 +90,48 @@ public class TreeAdapter extends BaseAdapter {
     }
 
     void sortList(){
-        int deep = getLevelDeep();
+        int deep = getLevelDeep(treeList);
         ArrayList<TreeItem> tempList = new ArrayList<TreeItem>();
+        while(getLevelCount(treeList,0)>0){
+            for(int j = 0; j<treeList.size() ; j++){
+                if(treeList.get(j).getLevel()== 0){
+                    tempList.add(treeList.get(j));
+                    treeList.remove(j);
+
+                    break;
+                }
+            }
+        }
     }
-    int getLevelCount(int level){
+
+    TreeItem stoleChild(ArrayList<TreeItem> fromList, ArrayList<TreeItem> toList, TreeItem parent){
+        for(int i=0; i< fromList.size() ; i++){
+            if(fromList.get(i).getParentId() == parent.getId()){
+//                if()
+            }
+        }
+
+        return null;
+    }
+
+    int getLevelCount(ArrayList<TreeItem> list,int level){
         int count = 0;
-        for(TreeItem item : treeList){
+        for(TreeItem item : list){
             if(item.getLevel()==level) count++;
         }
         return count;
     }
-    TreeItem getItemById(int id){
-        for(TreeItem item : treeList){
+    TreeItem getItemById(ArrayList<TreeItem> list, int id){
+        for(TreeItem item : list){
             if(item.getId()==id) return item;
         }
         return null;
     }
 
-    int getLevelDeep(){
+    int getLevelDeep(ArrayList<TreeItem> list){
         int deep = 0;
         while(1>0){
-            if(getLevelCount(deep)>0)
+            if(getLevelCount(list, deep)>0)
                 deep++;
             else
                 break;
